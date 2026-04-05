@@ -50,14 +50,14 @@ export default function Navbar() {
         <div className="container" style={{ maxWidth: 1140, margin: '0 auto', padding: '0 15px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <a href="#home" onClick={(e) => scrollTo(e, '#home')}>
-              <Image
+              {/* <Image
                 src="/images/Aron.jpg"
-                alt="Aaron Knox"
+                alt="Dejan Mitrovic"
                 width={40}
                 height={40}
                 unoptimized
                 style={{ borderRadius: '50%', objectFit: 'cover' }}
-              />
+              /> */}
             </a>
 
             {/* Desktop nav */}

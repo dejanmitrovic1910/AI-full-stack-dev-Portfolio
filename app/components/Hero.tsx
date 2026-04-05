@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 
+const HIRE_ME_URL = 'https://www.freelancer.com/u/DeMit19';
+
 const slides = [
   {
     bg: '/uploads/banner-02.png',
@@ -26,6 +28,11 @@ export default function Hero() {
   const prev = () => setCurrent((c) => (c - 1 + slides.length) % slides.length);
   const next = () => setCurrent((c) => (c + 1) % slides.length);
 
+  const scrollToPortfolio = (e: React.MouseEvent) => {
+    e.preventDefault();
+    document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div id="home" className="hero-slider">
       {slides.map((slide, i) => (
@@ -38,7 +45,26 @@ export default function Hero() {
             <div style={{ maxWidth: 1140, width: '100%', margin: '0 auto', padding: '0 15px' }}>
               <div style={{ maxWidth: '66.666%' }}>
                 <h1 className="big">Senior AI Full-Stack &amp; Mobile Developer</h1>
-                <p>{slide.text}</p>
+                <p style={{ marginBottom: 36 }}>{slide.text}</p>
+
+                {/* CTA buttons — placed below text, where the eye lands after reading */}
+                <div className="hero-cta-row">
+                  <a
+                    href={HIRE_ME_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hero-cta-primary"
+                  >
+                    Hire Me
+                  </a>
+                  <a
+                    href="#portfolio"
+                    onClick={scrollToPortfolio}
+                    className="hero-cta-secondary"
+                  >
+                    View My Work
+                  </a>
+                </div>
               </div>
             </div>
           </div>

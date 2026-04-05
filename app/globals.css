@@ -205,6 +205,60 @@ ul, li, ol {
   font-size: 18px;
   line-height: 1.7;
 }
+/* Hero CTA buttons */
+.hero-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.hero-cta-primary {
+  display: inline-block;
+  padding: 16px 44px;
+  background: #faad3b;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+  box-shadow: 0 4px 20px rgba(250,173,59,0.4);
+}
+.hero-cta-primary:hover {
+  background: #e89e2a;
+  box-shadow: 0 8px 32px rgba(250,173,59,0.55);
+  transform: translateY(-2px);
+  color: #fff;
+}
+.hero-cta-secondary {
+  display: inline-block;
+  padding: 15px 40px;
+  background: transparent;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid rgba(255,255,255,0.7);
+  border-radius: 3px;
+  transition: background 0.3s, border-color 0.3s, transform 0.2s;
+}
+.hero-cta-secondary:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: #fff;
+  color: #fff;
+  transform: translateY(-2px);
+}
+@media (max-width: 767px) {
+  .hero-cta-primary, .hero-cta-secondary {
+    padding: 13px 28px;
+    font-size: 13px;
+  }
+}
+
 .slider-dots {
   position: absolute;
   bottom: 30px;

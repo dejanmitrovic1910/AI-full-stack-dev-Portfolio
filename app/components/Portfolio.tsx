@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
-type Category = "all" | "mobile" | "frontend" | "backend";
+type Category = "all" | "ai" | "mobile" | "frontend" | "backend";
 
 const projects = [
   {
@@ -24,6 +24,51 @@ const projects = [
     title: "Dating App",
     desc: "",
     cats: ["mobile", "backend", "frontend"] as Category[],
+  },
+  {
+    id: 13,
+    img: "/images/portfolio/13.AI_Dating_Mobile_Web.jpg",
+    w: 808,
+    h: 632,
+    title: "AI Dating — Mobile & Web",
+    desc: "AI-powered matchmaking platform with smart compatibility scoring, NLP conversation starters, and cross-platform (iOS, Android, Web) delivery.",
+    cats: ["ai", "mobile", "frontend"] as Category[],
+  },
+  {
+    id: 14,
+    img: "/images/portfolio/14.AI_Nutrition_&_Calorie_Tracking_App.png",
+    w: 805,
+    h: 632,
+    title: "AI Nutrition & Calorie Tracker",
+    desc: "LLM-driven nutrition coach that analyses meals from photos, tracks macros, and delivers personalised dietary recommendations in real time.",
+    cats: ["ai", "mobile"] as Category[],
+  },
+  {
+    id: 15,
+    img: "/images/portfolio/15.AI_Video_generator.png",
+    w: 1536,
+    h: 1024,
+    title: "AI Video Generator",
+    desc: "Full-stack AI video generation platform using diffusion models and LLM script generation — from prompt to polished video in minutes.",
+    cats: ["ai", "frontend", "backend"] as Category[],
+  },
+  {
+    id: 16,
+    img: "/images/portfolio/16.Ecommerce_fashion_app.png",
+    w: 1536,
+    h: 1024,
+    title: "AI Fashion Ecommerce App",
+    desc: "AI-powered fashion ecommerce with virtual try-on, personalised style recommendations, and a scalable Next.js + Node.js backend.",
+    cats: ["ai", "frontend", "mobile"] as Category[],
+  },
+  {
+    id: 17,
+    img: "/images/portfolio/17.Smart_AI_Plant%20_Identifier%20.png",
+    w: 1055,
+    h: 680,
+    title: "Smart AI Plant Identifier",
+    desc: "On-device ML app that identifies plants from photos, diagnoses diseases, and provides care guides — built with Swift and CoreML.",
+    cats: ["ai", "mobile"] as Category[],
   },
   {
     id: 3,
@@ -119,6 +164,7 @@ const projects = [
 
 const filters: { label: string; value: Category }[] = [
   { label: "All", value: "all" },
+  { label: "AI Projects", value: "ai" },
   { label: "Mobile Development", value: "mobile" },
   { label: "Frontend Development", value: "frontend" },
   { label: "Backend Development", value: "backend" },

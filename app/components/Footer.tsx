@@ -17,7 +17,7 @@ export default function Footer() {
     <>
       <div className="copyrights">
         <div style={{ maxWidth: 1140, margin: '0 auto', padding: '0 15px' }}>
-          <p>All Rights Reserved. &copy; 2024 <a href="#">Aaron Knox</a></p>
+          <p>All Rights Reserved. &copy; 2024 <a href="#">Dejan Mitrovic</a></p>
         </div>
       </div>
 

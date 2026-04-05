@@ -1,8 +1,9 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap');
+@import "tailwindcss";
 
 * {
   box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 body {
@@ -135,45 +136,26 @@ ul, li, ol {
   background: #2d3573;
 }
 
-/* Btn */
-.btn-new {
-  position: relative;
-  padding: 11px 25px;
-  font-size: 16px;
-  border: none;
+/* Portfolio filter buttons — matches original exactly */
+.filter-btn {
+  color: #333;
+  white-space: nowrap;
+  letter-spacing: 1px;
   text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px;
   cursor: pointer;
-  background: rgba(31,87,21,0.42);
-  color: #ffffff;
-  display: inline-block;
-  user-select: none;
-  overflow: hidden;
-  z-index: 1;
-  transition: color 600ms cubic-bezier(0.77,0,0.175,1);
+  background: #fff;
+  padding: 12px 40px;
+  border: none;
+  border-radius: 0;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
 }
-.btn-new::before, .btn-new::after {
-  content: '';
-  position: absolute;
-  transition: all 300ms cubic-bezier(0.77,0,0.175,1);
-  z-index: -1;
-}
-.btn-new.from-middle::before {
-  top: 0; bottom: 0; left: 50%; right: 50%;
-  background: #585c7a;
-}
-.btn-new.from-middle::after {
-  top: 0; bottom: 0; left: 0; right: 0;
-  background: #252a2b;
-  opacity: 0;
-}
-.btn-new.from-middle:hover::before {
-  left: 0; right: 0;
-}
-.btn-new.from-middle:hover::after {
-  opacity: 0;
-}
-.btn-new.active-filter {
-  background: #252a2b;
+
+.filter-btn.active {
+  background: #faad3b;
+  color: #fff;
+  box-shadow: 2px 20px 45px 5px rgba(0,0,0,.2);
 }
 
 /* Hero Slider */
@@ -314,14 +296,62 @@ ul, li, ol {
 }
 .services-inner-box p { font-size: 14px; color: #999; }
 
+/* Masonry grid — CSS columns */
+.masonry-grid {
+  columns: 3;
+  column-gap: 30px;
+}
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 991px) {
+  .masonry-grid { columns: 2; }
+}
+@media (max-width: 575px) {
+  .masonry-grid { columns: 1; }
+}
+
 /* Portfolio */
 .gallery-menu {
   margin-bottom: 40px;
   display: flex;
-  justify-content: center;
+  align-items: center;
   gap: 10px;
-  flex-wrap: wrap;
 }
+.cat-slider-view {
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
+}
+.cat-slider-track {
+  display: flex;
+  gap: 8px;
+  transition: transform 0.3s ease;
+  user-select: none;
+  cursor: grab;
+}
+.cat-slider-track:active { cursor: grabbing; }
+.cat-nav-btn {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #ddd;
+  font-size: 20px;
+  color: #555;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
+  padding: 0;
+  line-height: 1;
+}
+.cat-nav-btn:hover:not(:disabled) { color: #faad3b; border-color: #faad3b; }
+.cat-nav-btn:disabled { opacity: 0.25; cursor: default; }
 .gallery-single {
   position: relative;
   overflow: hidden;
@@ -331,8 +361,7 @@ ul, li, ol {
 }
 .gallery-single img {
   width: 100%;
-  height: 220px;
-  object-fit: cover;
+  height: auto;
   display: block;
   backface-visibility: hidden;
   transition: opacity 0.4s ease;
@@ -379,6 +408,60 @@ ul, li, ol {
 .gallery-single:hover .img-overlay {
   opacity: 1;
   transform: translateY(0);
+}
+
+.hoverbutton {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.8);
+  display: flex; align-items: center; justify-content: center;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.hoverbutton:hover { background: rgba(255,255,255,0.35); }
+
+/* Hire Me button — desktop navbar */
+.hire-me-btn {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 8px 22px;
+  background: #faad3b;
+  color: #fff !important;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: background 0.3s, box-shadow 0.3s;
+  white-space: nowrap;
+}
+.hire-me-btn:hover {
+  background: #e89e2a;
+  box-shadow: 2px 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Hire Me button — mobile sticky (bottom-right) */
+.hire-me-sticky {
+  display: none;
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9998;
+  padding: 12px 22px;
+  background: #faad3b;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.hire-me-sticky:hover { background: #e89e2a; }
+
+@media (max-width: 767px) {
+  .hire-me-sticky { display: block; }
 }
 
 /* Experience */
@@ -503,6 +586,8 @@ ul, li, ol {
 }
 
 @media (max-width: 767px) {
+  /* Reduce section padding by ~30% on mobile (70px → 49px) */
+  .section { padding: 49px 0; }
   .hero-content h1 { font-size: 26px; }
   .section-title h3 { font-size: 26px; line-height: 40px !important; }
   .message-box h2 { font-size: 26px; }
@@ -510,4 +595,23 @@ ul, li, ol {
   .snip1401 figcaption::before {
     border-width: 80px 80px 80px 0;
   }
+  /* About responsive */
+  .about-col { width: 100% !important; margin-bottom: 30px; }
+  /* Services responsive */
+  .service-col { width: 100% !important; }
+  /* Portfolio responsive */
+  .portfolio-col { width: 50% !important; }
+  /* Experience responsive */
+  .exp-col { width: 100% !important; }
+  /* Contact responsive */
+  .contact-col { width: 100% !important; }
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+  .service-col { width: 50% !important; }
+  .portfolio-col { width: 50% !important; }
+}
+
+@media (max-width: 480px) {
+  .portfolio-col { width: 100% !important; }
 }

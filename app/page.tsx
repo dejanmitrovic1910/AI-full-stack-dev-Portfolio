@@ -4,8 +4,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
 import Portfolio from './components/Portfolio';
-import Experience from './components/Experience';
-import Contact from './components/Contact';
+import WhyWorkWithMe from './components/WhyWorkWithMe';
 import Footer from './components/Footer';
 
 export default function Home() {
@@ -17,6 +16,7 @@ export default function Home() {
       <About />
       <Services />
       <Portfolio />
+      <WhyWorkWithMe />
       <Footer />
     </>
   );

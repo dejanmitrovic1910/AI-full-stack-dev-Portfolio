@@ -10,7 +10,7 @@ const navLinks = [
   { label: 'About Me', href: '#about' },
   { label: 'Services', href: '#services' },
   { label: 'Portfolio', href: '#portfolio' },
-  { label: 'Contact Us', href: '#contact' },
+  { label: 'Why me', href: '#why' },
 ];
 
 export default function Navbar() {
@@ -22,14 +22,31 @@ export default function Navbar() {
     const handleScroll = () => {
       setShrink(window.scrollY > 80);
 
-      const sections = ['home', 'about', 'services', 'portfolio', 'blog', 'contact'];
-      for (const id of sections.reverse()) {
+      const sectionIds = ['home', 'about', 'services', 'portfolio', 'why'];
+      const offset = 100;
+      const scrollY = window.scrollY;
+      const line = scrollY + offset;
+      const scrollBottom = scrollY + window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+
+      // Activate the last section whose top is at or above the scan line (stable
+      // while scrolling). getBoundingClientRect avoids offsetParent issues.
+      let current = sectionIds[0];
+      for (let i = 0; i < sectionIds.length; i++) {
+        const id = sectionIds[i];
         const el = document.getElementById(id);
-        if (el && window.scrollY >= el.offsetTop - 100) {
-          setActive(id);
-          break;
-        }
+        if (!el) continue;
+        const top = el.getBoundingClientRect().top + scrollY;
+        if (top <= line) current = id;
       }
+
+      // Last section shorter than viewport: you can hit max scroll before the scan
+      // line passes #why, so the loop would stay on "Portfolio".
+      if (scrollBottom >= docHeight - 5) {
+        current = sectionIds[sectionIds.length - 1];
+      }
+
+      setActive(current);
     };
 
     window.addEventListener('scroll', handleScroll);
